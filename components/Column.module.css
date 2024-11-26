@@ -1,0 +1,14 @@
+.buttonAdd {
+  width: 64px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--gray-400);
+}
+
+.buttonAdd:hover {
+  background-color: var(--gray-500);
+}
+
+.buttonAdd:active {
+  background-color: var(--gray-600);
+}

@@ -1,4 +1,21 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #e5e7eb;
+  --gray-200: #f3f4f6;
+  --gray-100: #f9fafb;
+
+  --cool-gray-300: #d1d5d6;
+
+  --secondary-200: #e5e7eb;
+
+  --blue: #3692ff;
+  --blue-hover: #1967d6;
+  --blue-active: #1251aa;
+  --error: #f74747;
+  --inactive: #9ca3af;
 }
