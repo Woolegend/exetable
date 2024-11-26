@@ -2,3 +2,17 @@
   display: flex;
   gap: 8px;
 }
+
+.tabList {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.tabList .item {
+  background-color: #eee;
+}
+
+.tabList .item.focus {
+  background-color: red;
+}

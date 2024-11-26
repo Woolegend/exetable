@@ -1,12 +1,18 @@
-import { Day, Exercise } from "@/pages";
-import styles from "./Column.module.css";
+import { Exercise } from "@/pages";
 
-export default function Column({ day, data }: { day: Day; data: Exercise[] }) {
-  console.log(data);
+export default function Column({ exercises }: { exercises: Exercise[] }) {
   return (
-    <div className={styles[day]}>
-      <h2>{day}</h2>
-      <button className={styles.buttonAdd}>+</button>
+    <div>
+      <div>
+        {exercises.map((exercise) => (
+          <div key={exercise.id}>
+            <div>{exercise.name}</div>
+            <div>{exercise.weight}</div>
+            <div>{exercise.repeat}</div>
+            <div>{exercise.set}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
