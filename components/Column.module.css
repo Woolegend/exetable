@@ -1,14 +1,36 @@
-.buttonAdd {
-  width: 64px;
-  border: none;
-  border-radius: 8px;
-  background-color: var(--gray-400);
+.exercise {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-5);
 }
 
-.buttonAdd:hover {
-  background-color: var(--gray-500);
+.wrap {
+  display: flex;
+  width: 100%;
 }
 
-.buttonAdd:active {
-  background-color: var(--gray-600);
+.name {
+  flex-grow: 1;
+  font-size: 20px;
+  color: var(--gray-1);
+}
+
+.group {
+  display: flex;
+  gap: 8px;
+
+  font-size: 12px;
+  color: var(--gray-2);
+}
+
+.feature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.option {
+  font-size: 14px;
+  text-decoration: underline;
+  color: var(--gray-2);
 }

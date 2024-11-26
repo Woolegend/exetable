@@ -1,21 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Poppins:wght@400;700;800&display=swap");
+
 :root {
-  --gray-900: #111827;
-  --gray-800: #1f2937;
-  --gray-700: #374151;
-  --gray-600: #4b5563;
-  --gray-500: #6b7280;
-  --gray-400: #9ca3af;
-  --gray-300: #e5e7eb;
-  --gray-200: #f3f4f6;
-  --gray-100: #f9fafb;
+  --gray-5: #343940;
+  --gray-4: #3d434b;
+  --gray-3: #484f59;
+  --gray-2: #9a9fa7;
+  --gray-1: #dce0e3;
 
-  --cool-gray-300: #d1d5d6;
+  --pink-1: #ea5f8e;
+}
 
-  --secondary-200: #e5e7eb;
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  --blue: #3692ff;
-  --blue-hover: #1967d6;
-  --blue-active: #1251aa;
-  --error: #f74747;
-  --inactive: #9ca3af;
+p,
+a {
+  margin: 0;
+}
+
+p {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #eee;
 }

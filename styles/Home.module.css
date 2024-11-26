@@ -1,18 +1,41 @@
+.container {
+  width: 520px;
+  padding-top: 8px;
+  border-radius: 8px;
+  margin: 24px auto;
+  background-color: var(--gray-4);
+}
+
 .table {
   display: flex;
   gap: 8px;
 }
 
-.tabList {
-  list-style: none;
+.TabList {
   display: flex;
-  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-5);
+  list-style: none;
 }
 
-.tabList .item {
-  background-color: #eee;
+.Tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--gray-1);
 }
 
-.tabList .item.focus {
-  background-color: red;
+.Tab.focus {
+  border-bottom: 2px solid var(--pink-1);
+}
+
+.Table {
+  padding: 16px 32px;
 }
