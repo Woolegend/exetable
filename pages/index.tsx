@@ -3,7 +3,8 @@ import Column from "@/components/Column";
 import { MouseEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Day, Exercise, Schedule } from "@/types/exercise.type";
-import AddExerciseForm from "@/components/AddExerciseForm";
+import SearchBar from "@/components/SearchBar";
+import Image from "next/image";
 
 const DAY_LIST: Day[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
@@ -39,11 +40,18 @@ export default function Home() {
   }, [a]);
 
   return (
-    <div className={styles.container}>
-      <TabList tab={tab} setTab={setTab} />
-      <AddExerciseForm onSubmit={handleChangeSchedule} />
-      <ColumnTable exercises={schedule[tab]} />
-    </div>
+    <>
+      <div className={styles.container}>
+        <TabList tab={tab} setTab={setTab} />
+        <div className={styles.wrap}>
+          <SearchBar onChange={handleChangeSchedule} />
+          <UtilList />
+          <div className={styles.Table}>
+            <Column exercises={schedule[tab]} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -69,10 +77,31 @@ function TabList({ tab, setTab }: { tab: Day; setTab: (day: Day) => void }) {
   );
 }
 
-function ColumnTable({ exercises }: { exercises: Exercise[] }) {
+function UtilList() {
+  const [isToastVisible, setIsToastVisible] = useState(false);
+
+  const handleCopyUrl = async () => {
+    const urlToCopy = window.location.href;
+    try {
+      await navigator.clipboard.writeText(urlToCopy);
+      setIsToastVisible(true);
+      setTimeout(() => setIsToastVisible(false), 3000);
+    } catch (err) {
+      console.error("복사할 수 없습니다 : ", err);
+    }
+  };
   return (
-    <div className={styles.Table}>
-      <Column exercises={exercises} />
-    </div>
+    <>
+      <div className={styles.UtilList}>
+        <button className={styles.copy} onClick={handleCopyUrl}>
+          <Image fill src="/images/ic_copy.svg" alt="공유" />
+        </button>
+      </div>
+      {isToastVisible && (
+        <span className={`${styles.toast} caption-medium`}>
+          루틴이 복사되었습니다.
+        </span>
+      )}
+    </>
   );
 }

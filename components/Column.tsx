@@ -34,7 +34,7 @@ function ExerciseItem({
   isSelected: boolean;
   onClick: (id: string | null) => void;
 }) {
-  const { exerciseId, weight, repeat, set } = exercise;
+  const { exerciseId } = exercise;
   const exerciseData = EXERCISE_DATAS[exerciseId as number];
 
   const handleClickFeature = () => {
@@ -48,7 +48,10 @@ function ExerciseItem({
   return (
     <div className={styles.ExerciseItem}>
       <div className={styles.wrap}>
-        <p className={styles.exercise}>{exerciseData.ko}</p>
+        <p className={styles.exercise}>
+          <span className={styles.ko}>{exerciseData.ko} </span>
+          <span className={styles.en}>{exerciseData.en}</span>
+        </p>
         {isSelected ? (
           <div className={styles.feature}>
             <div className={styles.option}>Edit</div>
@@ -59,6 +62,7 @@ function ExerciseItem({
           </div>
         ) : (
           <Image
+            className={styles.feature}
             width={24}
             height={24}
             src="/images/ic_kebab.svg"
@@ -71,9 +75,9 @@ function ExerciseItem({
         )}
       </div>
       <div className={styles.group}>
-        <span>{weight}kg</span>
-        <span>{repeat}회</span>
-        <span>{set}세트</span>
+        <span>{0}kg</span>
+        <span>{0}회</span>
+        <span>{0}세트</span>
       </div>
     </div>
   );

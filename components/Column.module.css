@@ -1,5 +1,5 @@
 .ExerciseItem {
-  padding-bottom: 12px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--gray-5);
 }
 
@@ -10,8 +10,16 @@
 
 .exercise {
   flex-grow: 1;
-  font-size: 20px;
   color: var(--gray-1);
+}
+
+.ko {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.en {
+  font-size: 16px;
 }
 
 .group {
@@ -27,9 +35,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .option {
+  user-select: none;
   font-size: 14px;
   text-decoration: underline;
   color: var(--gray-2);
