@@ -45,8 +45,6 @@ function ExerciseItem({
     onClick(null);
   };
 
-  console.log(exercise, exerciseData);
-
   return (
     <div className={styles.ExerciseItem}>
       <div className={styles.wrap}>

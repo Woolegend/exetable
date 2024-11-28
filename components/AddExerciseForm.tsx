@@ -1,6 +1,7 @@
 import { Exercise } from "@/types/exercise.type";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import SearchBar from "./SearchBar";
+import { EXERCISE_DATAS } from "@/mock/mock_exercise";
 
 const DEFAULT_EXERCISE = {
   exerciseId: null,
@@ -11,6 +12,14 @@ const DEFAULT_EXERCISE = {
 
 function getDefaultExercise(): Exercise {
   return { ...DEFAULT_EXERCISE, id: Date.now().toString() };
+}
+
+function checkExerciseValid(exercise: Exercise): boolean {
+  const { id, exerciseId: eid } = exercise;
+  if (!id) return false;
+  if (!eid) return false;
+  if (!EXERCISE_DATAS[eid]) return false;
+  return true;
 }
 
 export default function AddExerciseForm({
@@ -32,9 +41,12 @@ export default function AddExerciseForm({
 
   const handleClickSubmitButton = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(event);
-    onSubmit(exercise);
-    setExercise(getDefaultExercise);
+    if (checkExerciseValid(exercise)) {
+      onSubmit(exercise);
+      setExercise(getDefaultExercise);
+    } else {
+      alert("잘못된 입력이라능");
+    }
   };
 
   return (
