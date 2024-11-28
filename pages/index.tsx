@@ -47,7 +47,15 @@ export default function Home() {
           <SearchBar onChange={handleChangeSchedule} />
           <UtilList />
           <div className={styles.Table}>
-            <Column exercises={schedule[tab]} />
+            {schedule[tab].length > 0 ? (
+              <Column exercises={schedule[tab]} />
+            ) : (
+              <div className={styles.placeholder}>
+                <span className={styles.placeholderText}>
+                  등록된 운동이 없습니다.
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
