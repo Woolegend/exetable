@@ -2,6 +2,7 @@ import { Exercise } from "@/types/exercise.type";
 import styles from "./Column.module.css";
 import Image from "next/image";
 import { useState } from "react";
+import { EXERCISE_DATAS } from "@/mock/mock_exercise";
 
 export default function Column({ exercises }: { exercises: Exercise[] }) {
   const [selected, setSelected] = useState<string | null>(null);
@@ -33,6 +34,9 @@ function ExerciseItem({
   isSelected: boolean;
   onClick: (id: string | null) => void;
 }) {
+  const { exerciseId, weight, repeat, set } = exercise;
+  const exerciseData = EXERCISE_DATAS[exerciseId as number];
+
   const handleClickFeature = () => {
     onClick(exercise.id);
   };
@@ -41,10 +45,12 @@ function ExerciseItem({
     onClick(null);
   };
 
+  console.log(exercise, exerciseData);
+
   return (
-    <div className={styles.exercise}>
+    <div className={styles.ExerciseItem}>
       <div className={styles.wrap}>
-        <p className={styles.name}>{exercise.name}</p>
+        <p className={styles.exercise}>{exerciseData.ko}</p>
         {isSelected ? (
           <div className={styles.feature}>
             <div className={styles.option}>Edit</div>
@@ -67,9 +73,9 @@ function ExerciseItem({
         )}
       </div>
       <div className={styles.group}>
-        <span>{exercise.weight}kg</span>
-        <span>{exercise.repeat}회</span>
-        <span>{exercise.set}세트</span>
+        <span>{weight}kg</span>
+        <span>{repeat}회</span>
+        <span>{set}세트</span>
       </div>
     </div>
   );

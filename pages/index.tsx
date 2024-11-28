@@ -41,8 +41,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <TabList tab={tab} setTab={setTab} />
-      <ColumnTable exercises={schedule[tab]} />
       <AddExerciseForm onSubmit={handleChangeSchedule} />
+      <ColumnTable exercises={schedule[tab]} />
     </div>
   );
 }

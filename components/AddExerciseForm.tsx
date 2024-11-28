@@ -1,8 +1,9 @@
 import { Exercise } from "@/types/exercise.type";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
+import SearchBar from "./SearchBar";
 
 const DEFAULT_EXERCISE = {
-  name: "",
+  exerciseId: null,
   weight: 0,
   repeat: 0,
   set: 0,
@@ -19,28 +20,26 @@ export default function AddExerciseForm({
 }) {
   const [exercise, setExercise] = useState<Exercise>(getDefaultExercise);
 
+  const handleChangeExerciseById = (id: number | null) => {
+    setExercise((prev) => ({ ...prev, exerciseId: id }));
+  };
+
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const name: string = event.target.name;
     const value = event.target.value;
     setExercise((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+  const handleClickSubmitButton = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    console.log(event);
     onSubmit(exercise);
     setExercise(getDefaultExercise);
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <input
-        name="name"
-        type="text"
-        onChange={handleChangeInput}
-        placeholder="운동 이름"
-        value={exercise.name}
-        required
-      />
+    <div>
+      <SearchBar onChange={handleChangeExerciseById} />
       <input
         name="weight"
         type="number"
@@ -62,7 +61,7 @@ export default function AddExerciseForm({
         placeholder="세트 수"
         value={exercise.set}
       />
-      <button type="submit">추가</button>
-    </form>
+      <button onClick={handleClickSubmitButton}>추가</button>
+    </div>
   );
 }

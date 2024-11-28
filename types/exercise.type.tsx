@@ -2,7 +2,7 @@ type Day = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
 
 interface Exercise {
   id: string;
-  name: string;
+  exerciseId: number | null;
   weight: number;
   repeat: number;
   set: number;

@@ -1,0 +1,22 @@
+.form {
+  position: relative;
+}
+
+.suggestionList {
+  position: absolute;
+  background-color: var(--gray-1);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.suggestion {
+  padding: 0 8px;
+}
+
+.suggestion:hover {
+  background-color: var(--gray-2);
+}
+
+.en {
+  font-size: 12px;
+}
