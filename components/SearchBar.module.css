@@ -1,0 +1,76 @@
+.form {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.suggestionWrap {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 4px;
+  background-color: var(--gray-5);
+}
+
+.suggestionList {
+  max-height: 280px;
+  overflow-y: scroll;
+}
+
+.suggestionList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.suggestionList::-webkit-scrollbar-thumb {
+  width: 4px;
+  border-radius: 16px;
+  background: var(--gray-2);
+}
+
+.suggestion {
+  padding: 0 8px;
+  color: var(--gray-2);
+}
+
+.suggestion:hover {
+  background-color: var(--gray-3);
+}
+
+.en {
+  font-size: 12px;
+}
+
+.fieldset {
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-5);
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  transition: 100ms ease;
+  caret-color: var(--gray-2);
+}
+
+.fieldset:focus-within {
+  outline: 2px solid var(--gray-2);
+  outline-offset: -1px;
+}
+
+.label {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.input {
+  flex-grow: 1;
+  background-color: inherit;
+  border: none;
+  color: var(--gray-1);
+}
+
+.input:focus-visible {
+  outline: none;
+}
