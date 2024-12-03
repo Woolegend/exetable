@@ -11,8 +11,16 @@ export default function Column({ exercises }: { exercises: Exercise[] }) {
     setSelected(id);
   };
 
+  if (exercises.length < 1) {
+    return (
+      <div className={styles.placeholder}>
+        <span className={styles.placeholderText}>등록된 운동이 없습니다.</span>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className={styles.table}>
       {exercises.map((exercise) => (
         <ExerciseItem
           key={exercise.id}

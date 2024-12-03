@@ -11,46 +11,13 @@
   gap: 8px;
 }
 
-.placeholder {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.placeholderText {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  color: var(--gray-2);
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-}
-
 .wrap {
   padding: 32px;
 }
 
-.Table {
-  padding: 0 16px 16px;
-  height: 480px;
-  overflow-y: scroll;
-}
-
-.Table::-webkit-scrollbar {
-  width: 4px;
-}
-
-.Table::-webkit-scrollbar-thumb {
-  width: 4px;
-  border-radius: 16px;
-  background: var(--gray-2);
-}
-
 @media screen and (max-width: 767px) {
   .container {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     margin: 0;
     border-radius: 0;

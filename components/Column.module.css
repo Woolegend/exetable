@@ -1,3 +1,19 @@
+.table {
+  padding: 0 16px 16px;
+  height: 480px;
+  overflow-y: scroll;
+}
+
+.table::-webkit-scrollbar {
+  width: 4px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  width: 4px;
+  border-radius: 16px;
+  background: var(--gray-2);
+}
+
 .ExerciseItem {
   padding: 12px 0;
   border-bottom: 1px solid var(--gray-5);
@@ -43,4 +59,22 @@
   font-size: 14px;
   text-decoration: underline;
   color: var(--gray-2);
+}
+
+.placeholder {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  padding: 0 16px 16px;
+}
+
+.placeholderText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  color: var(--gray-2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
 }

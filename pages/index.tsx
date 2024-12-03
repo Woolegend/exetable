@@ -45,17 +45,7 @@ export default function Home() {
         <div className={styles.wrap}>
           <SearchBar onChange={handleChangeSchedule} />
           <UtilList />
-          <div className={styles.Table}>
-            {schedule[tab].length > 0 ? (
-              <Column exercises={schedule[tab]} />
-            ) : (
-              <div className={styles.placeholder}>
-                <span className={styles.placeholderText}>
-                  등록된 운동이 없습니다.
-                </span>
-              </div>
-            )}
-          </div>
+          <Column exercises={schedule[tab]} />
         </div>
       </div>
     </>
