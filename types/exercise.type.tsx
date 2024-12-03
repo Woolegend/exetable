@@ -10,6 +10,7 @@ interface Group {
   weight: number;
   repeat: number;
   set: number;
+  id: string;
 }
 
 type Schedule = {
