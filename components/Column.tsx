@@ -59,9 +59,8 @@ function ExerciseItem({
   };
 
   const handleClickDelete = () => {
-    console.log("delete");
     const flag = confirm(
-      `${exerciseData.ko}(${exerciseData.en})을 제거 하시겠습니까?`
+      `${exerciseData.ko}(${exerciseData.en})을 제거할까요?`
     );
     if (flag) onDelete(exercise.id);
     onClick(null);

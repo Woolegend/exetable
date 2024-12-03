@@ -26,8 +26,7 @@ export default function Home() {
   const handleChangeSchedule = (exercise: Exercise) => {
     setSchedule((prev) => {
       const copy = { ...prev, [tab]: [...prev[tab], exercise] };
-      const save = btoa(JSON.stringify(copy));
-      window.history.pushState({}, "", "?a=" + save);
+      applyScheduleToUrl(copy);
       return copy;
     });
   };
@@ -39,10 +38,14 @@ export default function Home() {
         ...prev,
         [tab]: next,
       };
-      const save = btoa(JSON.stringify(copy));
-      window.history.pushState({}, "", "?a=" + save);
+      applyScheduleToUrl(copy);
       return copy;
     });
+  };
+
+  const applyScheduleToUrl = (data: Schedule) => {
+    const save = btoa(JSON.stringify(data));
+    window.history.pushState({}, "", "?a=" + save);
   };
 
   useEffect(() => {
