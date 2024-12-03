@@ -16,4 +16,15 @@ type Schedule = {
   [key in Day]: Exercise[];
 };
 
+const DEFAULT_SCHEDULE: Schedule = {
+  mon: [],
+  tue: [],
+  wed: [],
+  thu: [],
+  fri: [],
+  sat: [],
+  sun: [],
+};
+
+export { DEFAULT_SCHEDULE };
 export type { Day, Exercise, Schedule };

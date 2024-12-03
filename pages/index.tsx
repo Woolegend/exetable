@@ -2,20 +2,15 @@ import styles from "@/styles/Home.module.css";
 import Column from "@/components/Column";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Day, Exercise, Schedule } from "@/types/exercise.type";
+import {
+  Day,
+  DEFAULT_SCHEDULE,
+  Exercise,
+  Schedule,
+} from "@/types/exercise.type";
 import SearchBar from "@/components/SearchBar";
 import TabList from "@/components/TabList";
 import UtilList from "@/components/UtilList";
-
-const DEFAULT_SCHEDULE: Schedule = {
-  mon: [],
-  tue: [],
-  wed: [],
-  thu: [],
-  fri: [],
-  sat: [],
-  sun: [],
-};
 
 export default function Home() {
   const [schedule, setSchedule] = useState(DEFAULT_SCHEDULE);
