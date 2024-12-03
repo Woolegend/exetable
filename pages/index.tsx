@@ -6,6 +6,7 @@ import {
   Day,
   DEFAULT_SCHEDULE,
   Exercise,
+  Group,
   Schedule,
 } from "@/types/exercise.type";
 import SearchBar from "@/components/SearchBar";
@@ -18,6 +19,11 @@ export default function Home() {
   const router = useRouter();
   const { a } = router.query;
 
+  const applyScheduleToUrl = (data: Schedule) => {
+    const save = btoa(JSON.stringify(data));
+    window.history.pushState({}, "", "?a=" + save);
+  };
+
   const handleChangeSchedule = (exercise: Exercise) => {
     setSchedule((prev) => {
       const copy = { ...prev, [tab]: [...prev[tab], exercise] };
@@ -26,9 +32,15 @@ export default function Home() {
     });
   };
 
-  const handleDeleteExercise = (exerciseId: string) => {
+  const handleChangeExercise = (id: string, group: Group) => {
     setSchedule((prev) => {
-      const next = prev[tab].filter((e) => e.id !== exerciseId);
+      const next = prev[tab].map((e) => {
+        if (e.id === id) {
+          return { ...e, groups: [...e.groups, group] };
+        }
+        return e;
+      });
+
       const copy = {
         ...prev,
         [tab]: next,
@@ -38,9 +50,16 @@ export default function Home() {
     });
   };
 
-  const applyScheduleToUrl = (data: Schedule) => {
-    const save = btoa(JSON.stringify(data));
-    window.history.pushState({}, "", "?a=" + save);
+  const handleDeleteExercise = (id: string) => {
+    setSchedule((prev) => {
+      const next = prev[tab].filter((e) => e.id !== id);
+      const copy = {
+        ...prev,
+        [tab]: next,
+      };
+      applyScheduleToUrl(copy);
+      return copy;
+    });
   };
 
   useEffect(() => {
@@ -56,7 +75,11 @@ export default function Home() {
         <div className={styles.wrap}>
           <SearchBar onChange={handleChangeSchedule} />
           <UtilList />
-          <Column exercises={schedule[tab]} onDelete={handleDeleteExercise} />
+          <Column
+            exercises={schedule[tab]}
+            onChange={handleChangeExercise}
+            onDelete={handleDeleteExercise}
+          />
         </div>
       </div>
     </>

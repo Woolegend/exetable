@@ -28,4 +28,4 @@ const DEFAULT_SCHEDULE: Schedule = {
 };
 
 export { DEFAULT_SCHEDULE };
-export type { Day, Exercise, Schedule };
+export type { Day, Group, Exercise, Schedule };

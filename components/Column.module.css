@@ -2,6 +2,7 @@
   padding: 0 16px 16px;
   height: 480px;
   overflow-y: scroll;
+  width: 100%;
 }
 
 .table::-webkit-scrollbar {
@@ -15,6 +16,7 @@
 }
 
 .ExerciseItem {
+  width: 100%;
   padding: 12px 0;
   border-bottom: 1px solid var(--gray-5);
 }
@@ -74,4 +76,23 @@
   font-size: 32px;
   font-weight: bold;
   text-align: center;
+}
+
+.groupForm {
+  width: 100%;
+}
+.groupField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.groupInput {
+  flex-grow: 1;
+  width: 30%;
+  padding: 4px;
+}
+
+.groupSubmit {
+  width: 100%;
 }
