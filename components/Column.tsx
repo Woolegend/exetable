@@ -4,7 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { EXERCISE_DATAS } from "@/mock/mock_exercise";
 
-export default function Column({ exercises }: { exercises: Exercise[] }) {
+export default function Column({
+  exercises,
+  onDelete,
+}: {
+  exercises: Exercise[];
+  onDelete: (exerciseId: string) => void;
+}) {
   const [selected, setSelected] = useState<string | null>(null);
 
   const handleSelect = (id: string | null) => {
@@ -27,6 +33,7 @@ export default function Column({ exercises }: { exercises: Exercise[] }) {
           exercise={exercise}
           isSelected={exercise.id === selected}
           onClick={handleSelect}
+          onDelete={onDelete}
         />
       ))}
     </div>
@@ -37,16 +44,27 @@ function ExerciseItem({
   exercise,
   isSelected,
   onClick,
+  onDelete,
 }: {
   exercise: Exercise;
   isSelected: boolean;
   onClick: (id: string | null) => void;
+  onDelete: (exerciseId: string) => void;
 }) {
   const { exerciseId } = exercise;
   const exerciseData = EXERCISE_DATAS[exerciseId as number];
 
   const handleClickFeature = () => {
     onClick(exercise.id);
+  };
+
+  const handleClickDelete = () => {
+    console.log("delete");
+    const flag = confirm(
+      `${exerciseData.ko}(${exerciseData.en})을 제거 하시겠습니까?`
+    );
+    if (flag) onDelete(exercise.id);
+    onClick(null);
   };
 
   const handleClickClose = () => {
@@ -62,10 +80,12 @@ function ExerciseItem({
         </p>
         {isSelected ? (
           <div className={styles.feature}>
-            <div className={styles.option}>Edit</div>
-            <div className={styles.option}>Delete</div>
+            <div className={styles.option}>수정</div>
+            <div className={styles.option} onClick={handleClickDelete}>
+              삭제
+            </div>
             <div className={styles.option} onClick={handleClickClose}>
-              close
+              닫기
             </div>
           </div>
         ) : (

@@ -32,6 +32,19 @@ export default function Home() {
     });
   };
 
+  const handleDeleteExercise = (exerciseId: string) => {
+    setSchedule((prev) => {
+      const next = prev[tab].filter((e) => e.id !== exerciseId);
+      const copy = {
+        ...prev,
+        [tab]: next,
+      };
+      const save = btoa(JSON.stringify(copy));
+      window.history.pushState({}, "", "?a=" + save);
+      return copy;
+    });
+  };
+
   useEffect(() => {
     if (!a) return;
     const save = JSON.parse(atob(a as string));
@@ -45,7 +58,7 @@ export default function Home() {
         <div className={styles.wrap}>
           <SearchBar onChange={handleChangeSchedule} />
           <UtilList />
-          <Column exercises={schedule[tab]} />
+          <Column exercises={schedule[tab]} onDelete={handleDeleteExercise} />
         </div>
       </div>
     </>
