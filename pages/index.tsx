@@ -1,12 +1,11 @@
 import styles from "@/styles/Home.module.css";
 import Column from "@/components/Column";
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Day, Exercise, Schedule } from "@/types/exercise.type";
 import SearchBar from "@/components/SearchBar";
-import Image from "next/image";
-
-const DAY_LIST: Day[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+import TabList from "@/components/TabList";
+import UtilList from "@/components/UtilList";
 
 const DEFAULT_SCHEDULE: Schedule = {
   mon: [],
@@ -59,57 +58,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
-  );
-}
-
-function TabList({ tab, setTab }: { tab: Day; setTab: (day: Day) => void }) {
-  const handleClickTab = (event: MouseEvent<HTMLUListElement>) => {
-    if (!(event.target instanceof HTMLElement)) return;
-    const li = event.target.closest("li");
-    if (li?.dataset.day) setTab(li.dataset.day as Day);
-  };
-
-  return (
-    <ul className={styles.TabList} onClick={handleClickTab}>
-      {DAY_LIST.map((day) => {
-        const classNames =
-          day === tab ? `${styles.Tab} ${styles.focus}` : styles.Tab;
-        return (
-          <li key={day} className={classNames} data-day={day}>
-            <span>{day.toUpperCase()}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function UtilList() {
-  const [isToastVisible, setIsToastVisible] = useState(false);
-
-  const handleCopyUrl = async () => {
-    const urlToCopy = window.location.href;
-    try {
-      await navigator.clipboard.writeText(urlToCopy);
-      setIsToastVisible(true);
-      setTimeout(() => setIsToastVisible(false), 3000);
-    } catch (err) {
-      console.error("복사할 수 없습니다 : ", err);
-    }
-  };
-  return (
-    <>
-      <div className={styles.UtilList}>
-        <button className={styles.copy} onClick={handleCopyUrl}>
-          <Image fill src="/images/ic_copy.svg" alt="공유" />
-        </button>
-      </div>
-      {isToastVisible && (
-        <span className={`${styles.toast} caption-medium`}>
-          루틴이 복사되었습니다.
-        </span>
-      )}
     </>
   );
 }

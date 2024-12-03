@@ -1,0 +1,24 @@
+.TabList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-5);
+}
+
+.Tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--gray-1);
+  user-select: none;
+}
+
+.Tab.focus {
+  border-bottom: 2px solid var(--pink-1);
+}
