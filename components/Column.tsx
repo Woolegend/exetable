@@ -124,37 +124,39 @@ function ExerciseItem({
           <span>{e.set}세트</span>
         </div>
       ))}
-      <form className={styles.groupForm} onSubmit={handleSubmit}>
-        <fieldset className={styles.groupField}>
-          <input
-            className={styles.groupInput}
-            name="weight"
-            type="number"
-            placeholder="무게 kg"
-            onChange={handleChange}
-            required
-          />
-          <input
-            className={styles.groupInput}
-            name="repeat"
-            type="number"
-            placeholder="반복 횟수"
-            onChange={handleChange}
-            required
-          />
-          <input
-            className={styles.groupInput}
-            name="set"
-            type="number"
-            placeholder="세트 수"
-            onChange={handleChange}
-            required
-          />
-        </fieldset>
-        <button className={styles.groupSubmit} type="submit">
-          추가
-        </button>
-      </form>
+      {isSelected && (
+        <form className={styles.groupForm} onSubmit={handleSubmit}>
+          <fieldset className={styles.groupField}>
+            <input
+              className={styles.groupInput}
+              name="weight"
+              type="number"
+              placeholder="무게 kg"
+              onChange={handleChange}
+              required
+            />
+            <input
+              className={styles.groupInput}
+              name="repeat"
+              type="number"
+              placeholder="반복 횟수"
+              onChange={handleChange}
+              required
+            />
+            <input
+              className={styles.groupInput}
+              name="set"
+              type="number"
+              placeholder="세트 수"
+              onChange={handleChange}
+              required
+            />
+          </fieldset>
+          <button className={styles.groupSubmit} type="submit">
+            추가
+          </button>
+        </form>
+      )}
     </div>
   );
 }
